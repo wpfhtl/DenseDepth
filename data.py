@@ -16,7 +16,6 @@ def nyu_resize(img, resolution=480, padding=6):
 
 def get_nyu_data(batch_size, nyu_data_zipfile='nyu_data.zip'):
     data = extract_zip(nyu_data_zipfile)
-
     nyu2_train = list((row.split(',') for row in (data['data/nyu2_train.csv']).decode("utf-8").split('\n') if len(row) > 0))
     nyu2_test = list((row.split(',') for row in (data['data/nyu2_test.csv']).decode("utf-8").split('\n') if len(row) > 0))
 

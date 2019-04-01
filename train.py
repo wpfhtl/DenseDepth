@@ -15,6 +15,7 @@ from keras.utils.vis_utils import plot_model
 # Argument Parser
 parser = argparse.ArgumentParser(description='High Quality Monocular Depth Estimation via Transfer Learning')
 parser.add_argument('--data', default='nyu', type=str, help='Training dataset.')
+parser.add_argument('--data_dir', default='/home/wpf/data/nyu_data', type=str, help='directory of dataset')
 parser.add_argument('--lr', type=float, default=0.0001, help='Learning rate')
 parser.add_argument('--bs', type=int, default=4, help='Batch size')
 parser.add_argument('--epochs', type=int, default=20, help='Number of epochs')
@@ -54,7 +55,7 @@ if True:
     # Keep a copy of this training script and calling arguments
     with open(__file__, 'r') as training_script: training_script_content = training_script.read()
     training_script_content = '#' + str(sys.argv) + '\n' + training_script_content
-    with open(runPath+'/'+__file__, 'w') as training_script: training_script.write(training_script_content)
+    with open(runPath+'/'+__file__.split('/')[-1], 'w') as training_script: training_script.write(training_script_content)
 
     # Generate model plot
     plot_model(model, to_file=runPath+'/model_plot.svg', show_shapes=True, show_layer_names=True)
